@@ -1,11 +1,11 @@
 class PhoneNumber {
   final String prefix;
   final String line;
+  final String pattern = r'^((\+|00)?972\-?|0)(([23489]|[57]\d)\-?\d{7})$';
+
   PhoneNumber({this.prefix, this.line});
 
   bool isValidIsraeliPhoneNumber() {
-    print(line);
-    final pattern = r'^((\+|00)?972\-?|0)(([23489]|[57]\d)\-?\d{7})$';
     final regExp = RegExp(pattern);
     if (line == null || line.isEmpty) {
       return false;
@@ -18,7 +18,7 @@ class PhoneNumber {
   }
 
   String get phoneNumberWithPrefix {
-    final num = '+' + prefix + line.substring(1);
+    final String num = '+' + prefix + line.substring(1);
     return num;
   }
 }

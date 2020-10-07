@@ -41,7 +41,7 @@ class TextInput extends StatelessWidget {
             ),
           ),
           Container(
-            height: maxLines == null ? 30.0 : 30.0 * maxLines,
+            height: maxLines == null ? 30.0 : 30.0 * maxLines * 0.80,
             width: 1.0,
             color: Colors.white.withOpacity(0.5),
             margin: const EdgeInsets.only(right: 10.0),
