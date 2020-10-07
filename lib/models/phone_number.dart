@@ -18,7 +18,15 @@ class PhoneNumber {
   }
 
   String get phoneNumberWithPrefix {
-    final String num = '+' + prefix + line.substring(1);
-    return num;
+    String num;
+    if (line.contains('+972')) {
+      num = line.substring(4);
+    } else if (line.contains('972')) {
+      num = line.substring(3);
+    } else {
+      num = line.substring(1);
+    }
+    final String phoneNumber = '+' + prefix + num;
+    return phoneNumber;
   }
 }
