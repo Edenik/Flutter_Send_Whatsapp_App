@@ -10,6 +10,7 @@ class TextInput extends StatelessWidget {
   final FocusNode focusNode;
   final int maxLines;
   final int maxLength;
+  final TextInputType textInputType;
 
   TextInput(
       {@required this.controller,
@@ -18,6 +19,7 @@ class TextInput extends StatelessWidget {
       @required this.icon,
       @required this.focusNode,
       @required this.onSubmit,
+      @required this.textInputType,
       this.maxLines,
       this.maxLength});
   @override
@@ -49,6 +51,7 @@ class TextInput extends StatelessWidget {
               controller: controller,
               textInputAction: textInputAction,
               onFieldSubmitted: onSubmit,
+              keyboardType: textInputType,
               focusNode: focusNode,
               maxLines: maxLines,
               maxLength: maxLength,

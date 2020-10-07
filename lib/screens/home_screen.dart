@@ -76,6 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   controller: _phoneController,
                   hintText: "Enter Phone Number",
                   textInputAction: TextInputAction.next,
+                  textInputType: TextInputType.phone,
                   focusNode: _phoneFocus,
                   icon: Icons.phone_iphone,
                   onSubmit: (term) {
@@ -85,13 +86,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 TextInput(
                   controller: _messageController,
                   hintText: "Enter Your Message",
-                  textInputAction: TextInputAction.done,
+                  textInputType: TextInputType.text,
+                  textInputAction: TextInputAction.none,
                   focusNode: _messageFocus,
                   icon: Icons.message,
                   maxLength: 300,
                   maxLines: 5,
                   onSubmit: (val) {
-                    _messageFocus.unfocus();
                     _sendWhatsappMessage(
                         _phoneController.text.replaceAll('-', '').trim());
                   },
@@ -104,8 +105,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     Icons.send,
                     color: Colors.white,
                   ),
-                  onPressed: () => _sendWhatsappMessage(
-                      _phoneController.text.replaceAll('-', '').trim()),
+                  onPressed: () {
+                    _messageFocus.unfocus();
+                    _sendWhatsappMessage(
+                        _phoneController.text.replaceAll('-', '').trim());
+                  },
                   label: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 10),
                     child: Text(
