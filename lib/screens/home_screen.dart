@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_open_whatsapp/flutter_open_whatsapp.dart';
-import 'package:flutter_send_whatsapp_app/widgets/round_button_widget.dart';
+import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
 import '../models/phone_number.dart';
 import '../widgets/text_input_widget.dart';
+import '../widgets/round_button_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,6 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   final FocusNode _phoneFocus = FocusNode();
   final FocusNode _messageFocus = FocusNode();
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  StreamSubscription _intentDataStreamSubscription;
+
   PhoneNumber _phoneNumber;
 
   final Color grandientStart = Color(0xFF075E54);
@@ -43,6 +48,40 @@ class _HomeScreenState extends State<HomeScreen> {
       BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
     currentFocus.unfocus();
     FocusScope.of(context).requestFocus(nextFocus);
+  }
+
+  void checkShareString(String value) {
+    PhoneNumber _shareString =
+        PhoneNumber(prefix: '972', line: value.replaceAll('-', '').trim());
+    if (_shareString.isValidIsraeliPhoneNumber()) {
+      _phoneController.text = value;
+    } else {
+      _messageController.text = value;
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    _intentDataStreamSubscription =
+        ReceiveSharingIntent.getTextStream().listen((String value) {
+      if (value != null) checkShareString(value);
+    }, onError: (err) {
+      print("getLinkStream error: $err");
+    });
+
+    ReceiveSharingIntent.getInitialText().then((String value) {
+      if (value != null) checkShareString(value);
+    }, onError: (err) {
+      print("getLinkStream error: $err");
+    });
+  }
+
+  @override
+  void dispose() {
+    _intentDataStreamSubscription.cancel();
+    super.dispose();
   }
 
   @override

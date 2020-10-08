@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^0.1.3
   flutter_open_whatsapp: ^0.1.2
+  receive_sharing_intent: ^1.4.1
 
 dev_dependencies:
   flutter_test:
