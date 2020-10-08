@@ -109,10 +109,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 RoundButton(
                   icon: Icons.clear,
                   onPressed: () {
-                    setState(() {
-                      _phoneController.clear();
-                      _messageController.clear();
-                    });
+                    _phoneController.clear();
+                    _messageController.clear();
                   },
                   text: 'Clear',
                 ),
