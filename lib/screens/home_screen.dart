@@ -51,8 +51,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void checkShareString(String value) {
-    PhoneNumber _shareString =
-        PhoneNumber(prefix: '972', line: value.replaceAll('-', '').trim());
+    PhoneNumber _shareString = PhoneNumber(
+      prefix: '972',
+      line: value
+          .replaceAll('-', '')
+          .replaceAll(' ', '')
+          .replaceAll('(', '')
+          .replaceAll(')', '')
+          .trim(),
+    );
     if (_shareString.isValidIsraeliPhoneNumber()) {
       _phoneController.text = value;
     } else {
@@ -141,7 +148,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () {
                     _messageFocus.unfocus();
                     _sendWhatsappMessage(
-                        _phoneController.text.replaceAll('-', '').trim());
+                      _phoneController.text
+                          .replaceAll('-', '')
+                          .replaceAll(' ', '')
+                          .replaceAll('(', '')
+                          .replaceAll(')', '')
+                          .trim(),
+                    );
                   },
                   text: 'Send Whatsapp Message',
                 ),
