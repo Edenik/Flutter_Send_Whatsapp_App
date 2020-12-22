@@ -31,7 +31,7 @@
 
 ## Screenshots
 <p align="center">
-    <img src="https://github.com/Edenik/Flutter_Send_Whatsapp_App/blob/main/media/Send%20Whatsapp%20Message%20App%20-%20International%20Number.gif?raw=true"
+    <img src="https://github.com/Edenik/Flutter_Send_Whatsapp_App/blob/main/media/Send%20Whatsapp%20Message%20-%20International%20Number.gif?raw=true"
     alt="Send Whatsapp Message to International Number" width="250">
     <img src="https://github.com/Edenik/Flutter_Send_Whatsapp_App/blob/main/media/Send%20Whatsapp%20Message.gif?raw=true"
         alt="Send Whatsapp Message To Israeli Number" width="250">
