@@ -1,9 +1,9 @@
-class PhoneNumber {
+class IsraeliPhoneNumber {
   final String prefix;
   final String line;
   final String pattern = r'^((\+|00)?972\-?|0)(([23489]|[57]\d)\-?\d{7})$';
 
-  PhoneNumber({this.prefix, this.line});
+  IsraeliPhoneNumber({this.prefix, this.line});
 
   bool isValidIsraeliPhoneNumber() {
     final regExp = RegExp(pattern);
